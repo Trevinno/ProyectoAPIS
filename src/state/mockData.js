@@ -43,6 +43,27 @@ const postIts = [
     },
 ]
 
+const MockChats = [
+    {
+        id: 'abcd',
+        name: 'John Snow',
+        date: 'Date'
+    },
+    {
+        id: 'efgh',
+        name: 'John Summer',
+        date: 'Date'},
+    {
+        id: 'ijkl',
+        name: 'John Spring',
+        date: 'Date'
+    }
+]
+
 export const getPostIts = () => {
     return postIts
+}
+
+export const getChats = () => {
+    return MockChats
 }

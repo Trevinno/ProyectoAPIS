@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+
 import '../css/mensajes_positivos.css'
 
 import {getPostIts} from '../state/mockData'
