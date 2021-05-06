@@ -6,28 +6,12 @@ const Homepage = () => {
     return ( 
         <React.Fragment>
             <body className='background'>
+                <section class="titles">
 
-            {/* <header>
-                <div>
-                <i class="fas fa-atom"></i>
-                <p>Yarn Over</p>
-                </div>
-                <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Jordane</a></li>
-                    <li><a href="#">Laine</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                </nav>
-            </header> */}
+                    <h1>Espe</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam maiores consectetur, laboriosam rerum obcaecati.</p>
 
-            <section class="titles">
-
-                <h1>Espe</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam maiores consectetur, laboriosam rerum obcaecati.</p>
-
-            </section>
+                </section>
 
             <section class="container-boxes">
                 <div class="box">
