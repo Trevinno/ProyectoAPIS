@@ -4,7 +4,7 @@ import '../css/mensajes_positivos.css'
 import Message from './message'
 import Story from './story'
 
-const Card = ({size, title, text, type, img_url}) => {
+const Card = ({size, title, text, type, img_url, user}) => {
     let card_type = 'Message'
 
     return (
@@ -15,6 +15,7 @@ const Card = ({size, title, text, type, img_url}) => {
             size={size}
             text={text}
             img_url={img_url}
+            user={user}
             /> 
             :
             <Story
@@ -22,6 +23,7 @@ const Card = ({size, title, text, type, img_url}) => {
             title={title}
             text={text}
             img_url={img_url}
+            user={user}
             />}
         </React.Fragment>
       );

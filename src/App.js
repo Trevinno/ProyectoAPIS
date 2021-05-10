@@ -8,6 +8,7 @@ import Chat from './pages/Chat'
 import PostIt from './pages/PostIt'
 import Perfil from './pages/Perfil'
 import ChatRoom from './pages/ChatRoom'
+import AddPostIt from './pages/AddPostIt'
 
 import {main, mainStateReducer} from './state/mainState'
 
@@ -23,14 +24,15 @@ function App() {
         <main.Provider value={{state: mainState, dispatch: stateDispatch}}>
           {/* <Navbar/> */}
               <Switch>
-              <Route path="/Homepage" component={Home} />
-              <Route path="/Mensajes_Positivos" component={Mensajes_Positivos} />
-              <Route path="/Chat" component={Chat} />
-              <Route path="/ChatRoom" component={ChatRoom} />
-              <Route path="/PostIt/:_id" component={PostIt} />
-              <Route path="/Perfil/:_id" component={Perfil} />
-              <Route path="/Perfil/" component={Perfil} />
-              <Redirect from="/" to="/Homepage" />
+              <Route path='/Homepage' component={Home} />
+              <Route path='/Mensajes_Positivos' component={Mensajes_Positivos} />
+              <Route path='/Chat' component={Chat} />
+              <Route path='/ChatRoom' component={ChatRoom} />
+              <Route path='/PostIt/:_id' component={PostIt} />
+              <Route path='/AddPostIt/' component={AddPostIt} />
+              <Route path='/Perfil/:_id' component={Perfil} />
+              <Route path='/Perfil/' component={Perfil} />
+              <Redirect from='/' to='/Homepage' />
               </Switch>
         </main.Provider>
     </React.Fragment>
