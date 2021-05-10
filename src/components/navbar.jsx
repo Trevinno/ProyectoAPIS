@@ -31,12 +31,11 @@ const Navbar = () => {
                 
                 <div class="nav-links">
                     <a onClick={() => handleNavigation('/Homepage')}>Home</a>
-                    <a onClick={() => handleNavigation('/Homepage')}>Chats</a>
-                    <a onClick={() => handleNavigation('/Homepage')} target="_blank">Chat Room</a>
-                    <a onClick={() => handleNavigation('/Homepage')} target="_blank">ChatBot</a>
-                    <a onClick={() => handleNavigation('/Homepage')} target="_blank">Mensajes Postivos</a>
+                    <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">Chat Room</a>
+                    <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">ChatBot</a>
+                    <a onClick={() => handleNavigation('/Mensajes_Positivos')} target="_blank">Mensajes Postivos</a>
                     <a onClick={() => handleNavigation('/Homepage')} target="_blank">Guias</a>
-                    <a onClick={() => handleNavigation('/Homepage')} target="_blank">Perfil</a>
+                    <a onClick={() => handleNavigation('/Perfil/')} target="_blank">Perfil</a>
                 </div>
             </div>
         </React.Fragment>
