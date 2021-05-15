@@ -5,33 +5,34 @@ import axios from 'axios';
 
 import '../css/mensajes_positivos.css'
 
-import {getPostIts} from '../state/mockData'
+// import {getPostIts2} from '../state/mockData'
 
 import Card from '../components/card'
 
+import Loader from "../components/loader"
+
 const Mensajes_Positivos = () => {
+    const history = useHistory()
     let [PostIts, setPostIts] = useState([])
 
     const url = `http://localhost:5000/api/postits/`;
-
-    const history = useHistory()
 
     let handleAddButton = () => {
         history.push('/AddPostIt/')
     }
 
-    // const getPostIts = async () => {
-    //     let postits = await axios.get(url)
-    //     return postits
-    //   };
+    const getPostIts = async () => {
+        let postits = await axios.get(url)
+        console.log(postits.data, 'getPostIts data')
+        return postits
+    };
 
     useEffect(async () => {
-        // let allPostits = await getPostIts();
-        // setPostIts(allPostits)
-        setPostIts(getPostIts)
+        let { data } = await getPostIts();
+        setPostIts(data)
     }, [])
 
-
+    console.log(PostIts, 'the posts its')
     return (  
         <React.Fragment>
             <div className='flex_placement'>
@@ -40,7 +41,7 @@ const Mensajes_Positivos = () => {
             <div class='wrapper'>
                 <main class='content'>
                     <div class='feed-grid'>
-                        {PostIts.map(el => <Card
+                        {PostIts && PostIts.length > 0 && PostIts.map(el => <Card
                             {...el}
                         />)}
                     </div>

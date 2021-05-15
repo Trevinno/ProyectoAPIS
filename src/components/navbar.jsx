@@ -36,6 +36,7 @@ const Navbar = () => {
                     <a onClick={() => handleNavigation('/Mensajes_Positivos')} target="_blank">Mensajes Postivos</a>
                     <a onClick={() => handleNavigation('/Homepage')} target="_blank">Guias</a>
                     <a onClick={() => handleNavigation('/Perfil/')} target="_blank">Perfil</a>
+                    <a onClick={() => handleNavigation('/Login/')} target="_blank">Iniciar Sesion</a>
                 </div>
             </div>
         </React.Fragment>

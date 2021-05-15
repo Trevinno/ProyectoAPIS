@@ -9,13 +9,14 @@ import PostIt from './pages/PostIt'
 import Perfil from './pages/Perfil'
 import ChatRoom from './pages/ChatRoom'
 import AddPostIt from './pages/AddPostIt'
+import Login from './pages/Login'
 
 import {main, mainStateReducer} from './state/mainState'
 
 function App() {
 
   let [mainState, stateDispatch] = useReducer(mainStateReducer, {
-    StateBool: false
+    name: ''
   })
 
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path='/AddPostIt/' component={AddPostIt} />
               <Route path='/Perfil/:_id' component={Perfil} />
               <Route path='/Perfil/' component={Perfil} />
+              <Route path='/Login/' component={Login} />
               <Redirect from='/' to='/Homepage' />
               </Switch>
         </main.Provider>

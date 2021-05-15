@@ -9,7 +9,7 @@ const app = express();
 const PORT = 5000; 
 
 const postitsRouter = require('./routes/postits.js')
-const usersRouter = require('./routes/users.js')
+const usersRouter = require('./routes/login.js')
 
 let PASSWORD = process.env.PASSWORD
 const MONGODB_URI = `mongodb+srv://Daru:${PASSWORD}@clustercurated-4syco.azure.mongodb.net/full-stack-server?retryWrites=true&w=majority`

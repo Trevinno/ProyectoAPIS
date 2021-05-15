@@ -60,7 +60,7 @@ const MockChats = [
     }
 ]
 
-export const getPostIts = () => {
+export const getPostIts2 = () => {
     return postIts
 }
 

@@ -17,8 +17,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/save', (req, res) => {
+    console.log('Testing out')
     const data = req.body;
-
+    console.log(data)
     const newPostit = new Postit(data);
 
     newPostit.save((error) => {

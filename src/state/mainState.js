@@ -1,15 +1,15 @@
 import React, { Component, createContext } from 'react';
 
 const initialState = {
-    StateBool: true
+    name: ''
 };
 
 const main = createContext(initialState)
 
 const mainStateReducer= (state, action) => {
     switch (action.type) {
-        case 'TOGGLE_State':
-            return {...state, StateBool: !state.modalBool}
+        case 'CHANGE_NAME':
+            return { ...state, city: action.payload.city };
         default: 
             return state
     }

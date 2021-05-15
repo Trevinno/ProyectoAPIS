@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import axios from "axios"
 
 import '../css/addComponent.css'
 
 const AddPostIt = () => {
 
+    let [postIt, setPostIt] = useState({});
+    const history = useHistory()
+    
     let handleChange = (e) => {
-        console.log('hello how are you')
+        const auxPostIt = { ...postIt };
+        auxPostIt[e.currentTarget.name] = e.currentTarget.value;
+        setPostIt(auxPostIt);
     }
 
     let submitForm = (e) => {
-        console.log('hello how are you')
+        axios.post("http://localhost:5000/api/postits/save", postIt)
+        history.push('/Mensajes_Positivos')
     }
 
     return ( 
@@ -25,6 +33,7 @@ const AddPostIt = () => {
                                 name='size' 
                                 value='1'
                                 className='shorter_text'
+                                onChange={handleChange}
                                 />
                         </div>
                         <label className='field_title' for='male'>Tamaño</label>
@@ -35,6 +44,7 @@ const AddPostIt = () => {
                                 name='size' 
                                 value='0'
                                 className='shorter_text'
+                                onChange={handleChange}
                                 />
                         </div>
                         <label for='nombre'>Pequeño</label>
@@ -46,6 +56,7 @@ const AddPostIt = () => {
                                 name='type' 
                                 value='Message'
                                 className='shorter_text'
+                                onChange={handleChange}
                                 />
                         </div>
                         <label className='field_title' for='male'>Tipo</label>
@@ -56,6 +67,7 @@ const AddPostIt = () => {
                                 name='type' 
                                 value='Story'
                                 className='shorter_text'
+                                onChange={handleChange}
                                 />
                         </div>
                         <label for='nombre'>Historia</label>
@@ -71,7 +83,7 @@ const AddPostIt = () => {
                     <div className='row'>
                         <input
                             type='text'
-                            name='desc'
+                            name='text'
                             onChange={handleChange}
                         />
                         <label className='field_title' for='nombre'>Texto</label>
@@ -79,7 +91,7 @@ const AddPostIt = () => {
                     <div className='row'>
                         <input
                             type='text'
-                            name='pic_url'
+                            name='img_url'
                             onChange={handleChange}
                         />
                         <label className='field_title' for='nombre'>Pic URL</label>
