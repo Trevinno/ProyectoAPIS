@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../models/users.model');
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 router.post("/login", async function (req, res) {
     const user = await Users.find({email:req.body.email})
@@ -11,18 +12,17 @@ router.post("/login", async function (req, res) {
     }
   
     const validPass = await bcrypt.compare(
-    req.body.password,
-    user[0].password
+        req.body.password,
+        user[0].password
     )
 
-    bcrypt.compare(req.body.password, 'superSecret', (err, res) => {
-        if(req.body.password != user.password){
-            return res.status(400).send("Contraseña incorrecta");
-        } else {
-            const token = jwt.sign({ email: usuario[0].email }, process.env.TOKEN_SECRET);
-            res.send(token);
-        }
-    });
+    if (!validPass) {
+        return res.status(400).send("Contraseña incorrecta");
+    }
+    // const token = jwt.sign({ email: user[0].email }, process.env.TOKEN_SECRET);
+
+    res.send('all good');
+
 
     })
 

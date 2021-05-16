@@ -8,8 +8,8 @@ const main = createContext(initialState)
 
 const mainStateReducer= (state, action) => {
     switch (action.type) {
-        case 'CHANGE_NAME':
-            return { ...state, city: action.payload.city };
+        case 'SET_USER':
+            return { ...state, name: action.payload.name };
         default: 
             return state
     }

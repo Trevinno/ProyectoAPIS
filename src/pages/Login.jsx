@@ -1,4 +1,4 @@
-import React, { Component, useState, useHistory, useEffect } from 'react';
+import React, { Component, useState, useHistory, useEffect, useContext } from 'react';
 
 import LoginComponent from '../components/login_component'
 import RegisterComponent from '../components/register_component'
@@ -6,9 +6,13 @@ import RegisterComponent from '../components/register_component'
 import axios from 'axios';
 import { Redirect } from 'react-router'
 
+import { main } from "../state/mainState";
+
 import '../css/login.css'
 
 const Login = () => {
+
+    let { state: globalState, dispatch } = useContext(main);
 
     let [loginInfo, setLoginInfo] = useState({});
     let [registerInfo, setRegisterInfo] = useState({});
@@ -29,7 +33,8 @@ const Login = () => {
     const [redirect, setRedirect] = useState(false)
 
     const handleLogin = async () => {
-        const {data} = await axios.post('http://localhost:5000/api/login/login', loginInfo)
+        const {data} = await 
+        dispatch({ type: "SET_USER", payload: { name: data.name }});
         if(data){
           setRedirect(true);
         }
