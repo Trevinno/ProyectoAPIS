@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 import '../css/navbar.css'
 
+import { main } from "../state/mainState";
 
 const Navbar = () => {
+    let { state: globalState, dispatch } = useContext(main);
 
     const history = useHistory()
 
@@ -12,6 +14,11 @@ const Navbar = () => {
         history.push(url)
     }
 
+    let cerrarSesion = () => {
+        // if (globalState)
+    }
+
+    console.log(globalState, "Global State Navbar")
     return (  
         <React.Fragment>
             <div class="nav">

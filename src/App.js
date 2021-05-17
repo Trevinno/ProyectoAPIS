@@ -16,14 +16,19 @@ import {main, mainStateReducer} from './state/mainState'
 function App() {
 
   let [mainState, stateDispatch] = useReducer(mainStateReducer, {
-    name: ''
+    name: '',
+    client: '',
+    country: '',
+    bio: '',
+    email: '',
+    img_url: '',
+    test: ''
   })
 
   return (
     <React.Fragment>
-      <Navbar/>
         <main.Provider value={{state: mainState, dispatch: stateDispatch}}>
-          {/* <Navbar/> */}
+        <Navbar/>
               <Switch>
               <Route path='/Homepage' component={Home} />
               <Route path='/Mensajes_Positivos' component={Mensajes_Positivos} />

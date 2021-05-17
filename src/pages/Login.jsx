@@ -30,26 +30,25 @@ const Login = () => {
         setRegisterInfo(auxRegisterInfo);
     }
 
-    const [redirect, setRedirect] = useState(false)
-
-    const handleLogin = async () => {
-        const {data} = await 
-        dispatch({ type: "SET_USER", payload: { name: data.name }});
-        if(data){
-          setRedirect(true);
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        let {data} = await axios.post("http://localhost:5000/api/users/login", loginInfo)
+        data = data[0]
+        if (data) {
+            dispatch({ type: "SET_USER", payload: { name: data.name, client: data.client, country: data.country, bio: data.bio, email: data.email, img_url: data.img_url}});
+            dispatch({ type: "SET_TEST", payload: { test: 'Newest Test'}});
         }
     }   
     
     const handleRegister = () => {
         console.log(registerInfo)
         axios.post("http://localhost:5000/api/users/registro", registerInfo)
-      }
-
-
-    if (redirect) {
-    return <Redirect to='/Homepage'/>;
     }
-    console.log(registerInfo)
+
+
+    if (globalState.name != '') {
+        return <Redirect to='/Homepage'/>;
+    }
     return ( 
     <React.Fragment>
         <div class='login-page'>
@@ -58,14 +57,13 @@ const Login = () => {
             <RegisterComponent
             handleChangeRegister={handleChangeRegister}
             handleRegister={handleRegister}
-            setRegister={setRedirect}
+            setRegister={setRegister}
             /> : 
             <LoginComponent
             handleChangeLogin={handleChangeLogin}
             handleLogin={handleLogin}
             setRegister={setRegister}
             /> } 
-
             </div>
         </div>
     </React.Fragment>

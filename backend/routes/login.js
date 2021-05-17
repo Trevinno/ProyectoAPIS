@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 
 router.post("/login", async function (req, res) {
     const user = await Users.find({email:req.body.email})
-
     if (user.length == 0) {
         return res.status(400).send("Email no existe");
     }
@@ -20,13 +19,11 @@ router.post("/login", async function (req, res) {
         return res.status(400).send("Contraseña incorrecta");
     }
     // const token = jwt.sign({ email: user[0].email }, process.env.TOKEN_SECRET);
+    console.log(validPass, "entered the call", user)
+    res.json(user);
+})
 
-    res.send('all good');
-
-
-    })
-
-  router.post("/registro", async function (req, res) {
+router.post("/registro", async function (req, res) {
     console.log('Test')
     const salt = await bcrypt.genSalt(10);;
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
