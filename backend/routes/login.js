@@ -41,4 +41,15 @@ router.post("/registro", async function (req, res) {
     await newUser.save(user);
 })
 
+router.get('/:email', (req, res) => {
+
+    Users.find({email:req.params.email})
+    .then((data) => {
+        console.log('User: ', data, req.params);
+        res.json(data);
+    }).catch((error) => {
+        console.log('error: Something broke', error);
+    });
+});
+
 module.exports = router;

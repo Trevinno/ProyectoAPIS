@@ -18,32 +18,33 @@ const emojiArray = {
     other: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/white-flag_1f3f3-fe0f.png"
   };
 
+const PerfilUsuarios = () => {
 
-const Perfil = () => {
     let { state: globalState, dispatch } = useContext(main);
-
-
-    if (globalState.name == '') {
-        return <Redirect to='/Homepage'/>;
-    }
-
+    
+    
+        const {name, client, country, bio, email, img_url, hobbies} = globalState.other_user
+        console.log(globalState.other_user, 'jose message')
+    
+    
+    console.log(globalState)
     return ( 
         <React.Fragment>
             <section class="profile_container">
                 <div class="profile_img_section">
-                    <img class="profile_img-LG" src={globalState.img_url} />
+                    <img class="profile_img-LG" src={img_url} />
                     <div class="flag_wrapper">
                         <img class="flag" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-south-korea_1f1f0-1f1f7.png" alt="South Korean Flag" />
                     </div>
                 </div>
 
                 <div class="profile_desc_section">
-                    <h2>{globalState.name}</h2>
-                    <h3>{globalState.client == 0 ? 'Asesor' : 'Persona'}</h3>
-                    <p class="description">globalState.bio</p>
+                    <h2>{name}</h2>
+                    <h3>{client == 0 ? 'Asesor' : 'Persona'}</h3>
+                    <p class="description">bio</p>
 
                     <div class="interests">
-                        {globalState.hobbies && globalState.hobbies > 0 && globalState.hobbies.map(el => 
+                        {hobbies && hobbies > 0 && hobbies.map(el => 
                         <span class="interests_item">
                             {el}
                         </span>
@@ -59,4 +60,4 @@ const Perfil = () => {
     );
 }
  
-export default Perfil;
+export default PerfilUsuarios;

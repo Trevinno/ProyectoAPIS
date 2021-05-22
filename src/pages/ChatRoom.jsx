@@ -15,10 +15,7 @@ const ChatRoom = () => {
                     <h1>Chat Room</h1>        
                     <form className="form">
                         <div className='flexBot'>
-                            {chats.map(el => <button type="submit" id="login-button">Login</button> )}
-                            {/* <button type="submit" id="login-button">Login</button>
-                            <button type="submit" id="login-button">Login</button>
-                            <button type="submit" id="login-button">Login</button> */}
+                            {chats.map(el => <button className='button_spacing' type="submit" id="login-button">Login</button> )}
                         </div>
                     </form>
                 </div>

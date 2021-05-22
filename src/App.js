@@ -10,6 +10,7 @@ import Perfil from './pages/Perfil'
 import ChatRoom from './pages/ChatRoom'
 import AddPostIt from './pages/AddPostIt'
 import Login from './pages/Login'
+import PerfilUsuarios from './pages/PerfilUsuarios'
 
 import {main, mainStateReducer} from './state/mainState'
 
@@ -22,7 +23,8 @@ function App() {
     bio: '',
     email: '',
     img_url: '',
-    test: ''
+    test: '',
+    other_user: {}
   })
 
   return (
@@ -36,7 +38,7 @@ function App() {
               <Route path='/ChatRoom' component={ChatRoom} />
               <Route path='/PostIt/:_id' component={PostIt} />
               <Route path='/AddPostIt/' component={AddPostIt} />
-              <Route path='/Perfil/:_id' component={Perfil} />
+              <Route path='/Perfil/:_id' component={PerfilUsuarios} />
               <Route path='/Perfil/' component={Perfil} />
               <Route path='/Login/' component={Login} />
               <Redirect from='/' to='/Homepage' />

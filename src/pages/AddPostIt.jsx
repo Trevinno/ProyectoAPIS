@@ -1,10 +1,13 @@
-import React, { Component, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { Component, useState, useContext } from 'react';
+import { useHistory, Redirect } from "react-router-dom";
 import axios from "axios"
+
+import { main } from '../state/mainState';
 
 import '../css/addComponent.css'
 
 const AddPostIt = () => {
+    let { state: globalState, dispatch } = useContext(main);
 
     let [postIt, setPostIt] = useState({});
     const history = useHistory()
@@ -18,6 +21,10 @@ const AddPostIt = () => {
     let submitForm = (e) => {
         axios.post("http://localhost:5000/api/postits/save", postIt)
         history.push('/Mensajes_Positivos')
+    }
+
+    if (globalState.name == '') {
+        return <Redirect to='/Homepage'/>;
     }
 
     return ( 

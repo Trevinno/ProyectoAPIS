@@ -36,10 +36,10 @@ router.post('/save', (req, res) => {
 });
 
 
-router.get('/:theme', (req, res) => {
-    Postit.find({"theme": req.params.theme})
+router.get('/:email', (req, res) => {
+    Postit.find({"email": req.params.email})
     .then((data) => {
-        console.log('PostIts: ', data);
+        console.log('User: ', data);
         res.json(data);
     }).catch((error) => {
         console.log('error: Something broke');

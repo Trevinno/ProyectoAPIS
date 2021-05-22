@@ -1,7 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
+import { useHistory } from "react-router-dom";
+
+import axios from 'axios';
+
+
+import { main } from "../state/mainState";
+
 import '../css/mensajes_positivos.css'
 
-const Story = ({size, title, text, img_url}) => {
+const Story = ({size, title, text, img_url, user}) => {
+
+    let { state: globalState, dispatch } = useContext(main);
+
+    const history = useHistory()
+
+    let handleUserClick = async () => {
+        let {data} = await axios.get(`http://localhost:5000/api/users/${user}`)
+        dispatch({ type: "SET_OTHER_USER", payload: {other_user: data[0]}});
+        // dispatch({ type: "'SET_OTHER_USER_INDIVIDUAL'", payload: {other_user:data[0]}});
+        console.log('data 0', data[0])
+        history.push(`/Perfil/${user}`)
+    }
+
     return ( 
         <React.Fragment>
             <div className={size ? 'card-half wide' : 'card-half'}>
@@ -11,7 +31,7 @@ const Story = ({size, title, text, img_url}) => {
                     <p>{text}</p>
                 </div>
                 <ul class="card-tools">
-                    <li class="tools-item"><i class="fa fa-heart like"></i><span class="tools-count">543</span></li>
+                    <li onClick={() => handleUserClick()} class="tools-item"><i class="fa fa-heart like"></i><span class="tools-count">{user}</span></li>
                     <li class="tools-item"><i class="fa fa-share share"></i></li>
                 </ul>
             </div>

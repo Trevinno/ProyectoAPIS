@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
@@ -9,9 +9,14 @@ import '../css/mensajes_positivos.css'
 
 import Card from '../components/card'
 
-import Loader from "../components/loader"
+import Loader from '../components/loader'
+
+import { main } from '../state/mainState';
 
 const Mensajes_Positivos = () => {
+
+    let { state: globalState, dispatch } = useContext(main);
+
     const history = useHistory()
     let [PostIts, setPostIts] = useState([])
 
@@ -32,12 +37,19 @@ const Mensajes_Positivos = () => {
         setPostIts(data)
     }, [])
 
+    let renderChatButton = () => {
+        if(globalState.name != '') {
+            return (
+                <div className='flex_placement'>
+                    <button className='checkout' onClick={() => handleAddButton()} >Add New Post</button>
+                </div>
+            )}
+    }
+
     console.log(PostIts, 'the posts its')
     return (  
         <React.Fragment>
-            <div className='flex_placement'>
-                <button className='checkout' onClick={() => handleAddButton()} >Add New Post</button>
-            </div>
+            {renderChatButton()}
             <div class='wrapper'>
                 <main class='content'>
                     <div class='feed-grid'>

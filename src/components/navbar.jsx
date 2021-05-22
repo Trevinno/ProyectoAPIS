@@ -14,8 +14,33 @@ const Navbar = () => {
         history.push(url)
     }
 
-    let cerrarSesion = () => {
-        // if (globalState)
+    let handleLogOut = () => {
+        dispatch({ type: "SET_USER", payload: { name: '', client: '', country: '', bio: '', email: '', img_url: ''}});
+        history.push('/Homepage')
+    }
+
+    let renderChatButton = () => {
+        if(globalState.name != '') {
+            return <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">Chat Room</a>
+        }
+    }
+
+    let renderLogInButton = () => {
+        if(globalState.name == '') {
+            return <a onClick={() => handleNavigation('/Login/')} target="_blank">Iniciar Sesion</a>
+        }
+    }
+
+    let renderLogOutButton = () => {
+        if(globalState.name != '') {
+            return <a onClick={() => handleLogOut()} target="_blank">Cerrar sesión</a>
+        }
+    }
+
+    let renderProfileButton = () => {
+        if(globalState.name != '') {
+            return <a onClick={() => handleNavigation('/Perfil/')} target="_blank">Perfil</a>
+        }
     }
 
     console.log(globalState, "Global State Navbar")
@@ -35,15 +60,15 @@ const Navbar = () => {
                     <span></span>
                     </label>
                 </div>
-                
                 <div class="nav-links">
                     <a onClick={() => handleNavigation('/Homepage')}>Home</a>
-                    <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">Chat Room</a>
+                    {renderChatButton()}
                     <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">ChatBot</a>
                     <a onClick={() => handleNavigation('/Mensajes_Positivos')} target="_blank">Mensajes Postivos</a>
                     <a onClick={() => handleNavigation('/Homepage')} target="_blank">Guias</a>
-                    <a onClick={() => handleNavigation('/Perfil/')} target="_blank">Perfil</a>
-                    <a onClick={() => handleNavigation('/Login/')} target="_blank">Iniciar Sesion</a>
+                    {renderProfileButton()}
+                    {renderLogInButton()}
+                    {renderLogOutButton()}
                 </div>
             </div>
         </React.Fragment>
