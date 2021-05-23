@@ -11,6 +11,7 @@ import ChatRoom from './pages/ChatRoom'
 import AddPostIt from './pages/AddPostIt'
 import Login from './pages/Login'
 import PerfilUsuarios from './pages/PerfilUsuarios'
+import SpecificChatRoom from './pages/SpecificChatRoom'
 
 import {main, mainStateReducer} from './state/mainState'
 
@@ -36,7 +37,7 @@ function App() {
               <Route path='/Mensajes_Positivos' component={Mensajes_Positivos} />
               <Route path='/Chat' component={Chat} />
               <Route path='/ChatRoom' component={ChatRoom} />
-              <Route path='/PostIt/:_id' component={PostIt} />
+              <Route path='/SpecificChatRoom:_id' component={SpecificChatRoom} />
               <Route path='/AddPostIt/' component={AddPostIt} />
               <Route path='/Perfil/:_id' component={PerfilUsuarios} />
               <Route path='/Perfil/' component={Perfil} />

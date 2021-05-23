@@ -17,8 +17,6 @@ const Story = ({size, title, text, img_url, user}) => {
     let handleUserClick = async () => {
         let {data} = await axios.get(`http://localhost:5000/api/users/${user}`)
         dispatch({ type: "SET_OTHER_USER", payload: {other_user: data[0]}});
-        // dispatch({ type: "'SET_OTHER_USER_INDIVIDUAL'", payload: {other_user:data[0]}});
-        console.log('data 0', data[0])
         history.push(`/Perfil/${user}`)
     }
 

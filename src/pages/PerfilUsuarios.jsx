@@ -18,16 +18,15 @@ const emojiArray = {
     other: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/white-flag_1f3f3-fe0f.png"
   };
 
-const PerfilUsuarios = () => {
-
+const PerfilUsuarios = (props) => {
+    const { _id } = props.match.params;
     let { state: globalState, dispatch } = useContext(main);
+
+    const {name, client, country, bio, email, img_url, hobbies} = globalState.other_user
+    console.log(globalState.other_user, 'jose message')
     
     
-        const {name, client, country, bio, email, img_url, hobbies} = globalState.other_user
-        console.log(globalState.other_user, 'jose message')
-    
-    
-    console.log(globalState)
+    console.log('id of the user', _id)
     return ( 
         <React.Fragment>
             <section class="profile_container">
