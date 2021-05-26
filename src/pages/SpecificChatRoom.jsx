@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
+import {useParams, Redirect} from 'react-router-dom'
 
 import '../css/specificChat.css'
 
+import { main } from "../state/mainState";
+
 import useChat from '../state/useChat'
 
-const SpecificChatRoom = () => {
+const SpecificChatRoom = (props) => {
 
-    const { messages, sendMessage } = useChat(4);
+    let { state: globalState, dispatch } = useContext(main);
+
+    const ChatArray = {
+        1: 'Tranquilidad',
+        2: 'Alegria',
+        3: 'Compasion' 
+      };
+
+    const {_id} = useParams()
+    const { messages, sendMessage } = useChat(_id);
     const [newMessage, setNewMessage] = React.useState("");
 
     const handleNewMessageChange = (e) => {
@@ -14,26 +26,32 @@ const SpecificChatRoom = () => {
     };
 
     const handleSendMessage = () => {
-        sendMessage(newMessage);
+        sendMessage(newMessage, globalState.name, globalState.client);
         setNewMessage("");
     };
 
+    if (globalState.name == '') {
+        return <Redirect to='/Homepage'/>;
+    }
 
     return ( 
         <React.Fragment>
             <div className="chat-room-container">
-                <h1 className="room-name">Chat: {'Each specific Info'}</h1>
+                <br/>
+                <br/>
+                <br/>
+                <h1 className="room-name">Chat: {ChatArray[_id]}</h1>
                 <div className="messages-container">
                     <ol className="messages-list">
                     {messages.map((message, i) => (
-                        <li
-                        key={i}
-                        className={`message-item ${
-                            message.ownedByCurrentUser ? "my-message" : "received-message"
-                        }`}
-                        >
-                        {message.body}
-                        </li>
+                        <div key={i} className={`message-item ${
+                            message.ownedByCurrentUser ? 'my-message' : message.client ? 'helper' : 'received-message'
+                        }`}>
+                            <p className='username'>{message.user}</p>
+                            <li>
+                            {message.body}
+                            </li>
+                        </div>
                     ))}
                     </ol>
                 </div>

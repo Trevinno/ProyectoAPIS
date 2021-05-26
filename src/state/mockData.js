@@ -45,17 +45,17 @@ const postIts = [
 
 const MockChats = [
     {
-        id: 'abcd',
-        name: 'John Snow',
+        id: '1',
+        name: 'Tranquilidad',
         date: 'Date'
     },
     {
-        id: 'efgh',
-        name: 'John Summer',
+        id: '2',
+        name: 'Alegria',
         date: 'Date'},
     {
-        id: 'ijkl',
-        name: 'John Spring',
+        id: '3',
+        name: 'Compasion',
         date: 'Date'
     }
 ]

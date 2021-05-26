@@ -65,3 +65,22 @@
 .messages-container, .new-message-input-field, .send-message-button {
     border-color: #9a9a9a;
 }
+
+.username {
+    font-size: 1.3rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+}
+
+.helper {
+    background-color: #31a24c;
+    margin-right: auto;
+}
+
+
+@media (max-width:600px) {
+    .username {
+        font-size: 1rem;
+        margin: 0 0 0.8rem;
+    }
+  }

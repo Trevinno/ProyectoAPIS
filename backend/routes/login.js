@@ -24,7 +24,6 @@ router.post("/login", async function (req, res) {
 })
 
 router.post("/registro", async function (req, res) {
-    console.log('Test')
     const salt = await bcrypt.genSalt(10);;
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     let user = {
@@ -37,8 +36,10 @@ router.post("/registro", async function (req, res) {
       hobbies: [],
       img_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw3EfHFxvvaUOMT8v7GQasjK0VT0-KYF38GQ&usqp=CAU'
     };
+    console.log(user)
     const newUser = new Users(user);
-    await newUser.save(user);
+    let var1 = await newUser.save(user);
+    console.log(var1)
 })
 
 router.get('/:email', (req, res) => {

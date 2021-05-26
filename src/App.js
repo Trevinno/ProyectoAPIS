@@ -37,7 +37,7 @@ function App() {
               <Route path='/Mensajes_Positivos' component={Mensajes_Positivos} />
               <Route path='/Chat' component={Chat} />
               <Route path='/ChatRoom' component={ChatRoom} />
-              <Route path='/SpecificChatRoom:_id' component={SpecificChatRoom} />
+              <Route path='/SpecificChatRoom/:_id' component={SpecificChatRoom} />
               <Route path='/AddPostIt/' component={AddPostIt} />
               <Route path='/Perfil/:_id' component={PerfilUsuarios} />
               <Route path='/Perfil/' component={Perfil} />
