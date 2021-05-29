@@ -36,6 +36,7 @@ const AddPostIt = () => {
                     <div className='row'>
                         <div className='color_checkbox'>
                             <input 
+                                data-testid='tamano_true'
                                 type='radio' 
                                 name='size' 
                                 value='1'
@@ -59,6 +60,7 @@ const AddPostIt = () => {
                     <div className='row'>
                         <div className='color_checkbox'>
                             <input 
+                                data-testid='tipo_mensaje'
                                 type='radio' 
                                 name='type' 
                                 value='Message'
@@ -89,6 +91,7 @@ const AddPostIt = () => {
                     </div>
                     <div className='row'>
                         <input
+                            data-testid='input_titulo'
                             type='text'
                             name='text'
                             onChange={handleChange}
@@ -97,6 +100,7 @@ const AddPostIt = () => {
                     </div>
                     <div className='row'>
                         <input
+                            data-testid='input_texto'
                             type='text'
                             name='img_url'
                             onChange={handleChange}

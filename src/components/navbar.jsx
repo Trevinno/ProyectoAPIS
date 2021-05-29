@@ -61,9 +61,9 @@ const Navbar = () => {
                     </label>
                 </div>
                 <div class="nav-links">
-                    <a onClick={() => handleNavigation('/Homepage')}>Home</a>
+                    <a data-testid='go_home' onClick={() => handleNavigation('/Homepage')}>Home</a>
                     {renderChatButton()}
-                    <a onClick={() => handleNavigation('/ChatRoom')} target="_blank">ChatBot</a>
+                    <a onClick={() => handleNavigation('/ChatBot')} target="_blank">ChatBot</a>
                     <a onClick={() => handleNavigation('/Mensajes_Positivos')} target="_blank">Mensajes Postivos</a>
                     <a onClick={() => handleNavigation('/Homepage')} target="_blank">Guias</a>
                     {renderProfileButton()}
