@@ -65,7 +65,7 @@ const Navbar = () => {
                     {renderChatButton()}
                     <a onClick={() => handleNavigation('/ChatBot')} target="_blank">ChatBot</a>
                     <a onClick={() => handleNavigation('/Mensajes_Positivos')} target="_blank">Mensajes Postivos</a>
-                    <a onClick={() => handleNavigation('/Homepage')} target="_blank">Guias</a>
+                    <a onClick={() => handleNavigation('/Guides')} target="_blank">Guias</a>
                     {renderProfileButton()}
                     {renderLogInButton()}
                     {renderLogOutButton()}

@@ -1,0 +1,22 @@
+div.blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin: 2rem;
+}
+div.blocks div {
+    background-color: #46a8b9;
+    border: 1px solid grey;
+    padding: 15px;
+}
+
+
+.heading {
+    margin: 1rem;
+}
+
+@media (max-width:600px) {
+    div.blocks {
+        grid-template-columns: 1fr
+    }
+  }

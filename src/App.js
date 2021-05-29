@@ -14,6 +14,7 @@ import PerfilUsuarios from './pages/PerfilUsuarios'
 import SpecificChatRoom from './pages/SpecificChatRoom'
 import ChatBot from './pages/ChatBot'
 import UpdateProfile from './pages/UpdateProfile'
+import Guides from './pages/Guides'
 
 import {main, mainStateReducer} from './state/mainState'
 
@@ -46,6 +47,7 @@ function App() {
               <Route path='/Perfil/' component={Perfil} />
               <Route path='/Login/' component={Login} />
               <Route path='/UpdateProfile/' component={UpdateProfile} />
+              <Route path='/Guides' component={Guides} />
               <Redirect from='/' to='/Homepage' />
               </Switch>
         </main.Provider>

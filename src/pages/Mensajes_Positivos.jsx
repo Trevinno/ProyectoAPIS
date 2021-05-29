@@ -41,7 +41,7 @@ const Mensajes_Positivos = () => {
         if(globalState.name != '') {
             return (
                 <div className='flex_placement'>
-                    <button className='checkout' onClick={() => handleAddButton()} >Add New Post</button>
+                    <button className='checkout' onClick={() => handleAddButton()} >Agregar un Mensaje Positivo</button>
                 </div>
             )}
     }
