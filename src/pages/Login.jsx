@@ -45,7 +45,7 @@ const Login = () => {
     
     const handleRegister = () => {
         console.log(registerInfo)
-        axios.post("http://localhost:5000/api/users/registro", registerInfo)
+        axios.post('http://localhost:5000/api/users/registro', registerInfo)
     }
 
 

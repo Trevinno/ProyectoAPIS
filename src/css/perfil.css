@@ -104,6 +104,10 @@ p {
 	margin-left: 100px;
 }
 
+.more_space {
+	margin-top: 3rem;
+}
+
 .link_img_wrapper {
 	width: 40px;
 	height: 40px;

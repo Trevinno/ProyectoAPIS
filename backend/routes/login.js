@@ -53,4 +53,22 @@ router.get('/:email', (req, res) => {
     });
 });
 
+router.post('/update/:email', (req, res) => {
+    Users.find({email:req.params.email})
+        .then(el => {
+            console.log(el, req.body)
+                el.bio = req.body.bio
+                el.hobbies = req.body.hobbies
+                el.country = req.body.country
+            // if (el.body.img_url) {
+            //     el.img_url = req.body.img_url
+            // }
+            console.log(el)
+            el.save()
+                .then(() => res.json('The update was made'))
+                .catch(err => res.status(400).json('Error: '+ err))
+        })
+        .catch(err => res.status(400).json('Error: ' + err))
+  });
+
 module.exports = router;

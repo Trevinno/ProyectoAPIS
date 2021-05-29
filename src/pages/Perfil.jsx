@@ -1,9 +1,11 @@
 import React, { Component, useContext } from 'react';
+import { useHistory, Redirect } from "react-router-dom";
 
 import '../css/perfil.css'
+import '../css/mensajes_positivos.css'
 
 import { main } from '../state/mainState';
-import { Redirect } from 'react-router'
+
 
 const emojiArray = {
     mexico: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-mexico_1f1f2-1f1fd.png",
@@ -22,6 +24,11 @@ const emojiArray = {
 const Perfil = () => {
     let { state: globalState, dispatch } = useContext(main);
 
+    const history = useHistory()
+
+    const handleUpdate = () => {
+        history.push('/UpdateProfile/')
+    }
 
     if (globalState.name == '') {
         return <Redirect to='/Homepage'/>;
@@ -40,7 +47,7 @@ const Perfil = () => {
                 <div class="profile_desc_section">
                     <h2>{globalState.name}</h2>
                     <h3>{globalState.client == 0 ? 'Asesor' : 'Persona'}</h3>
-                    <p class="description">globalState.bio</p>
+                    <p class="description">{globalState.bio}</p>
 
                     <div class="interests">
                         {globalState.hobbies && globalState.hobbies > 0 && globalState.hobbies.map(el => 
@@ -53,8 +60,11 @@ const Perfil = () => {
                         <span class="interests_item">Leadership</span> */}
                     </div>
                 </div>
-
             </section>
+            <div className='flex_placement'>
+                    <button className='checkout more_space' onClick={() => handleUpdate()} >Editar Perfil</button>
+            </div>
+            
         </React.Fragment>
     );
 }
