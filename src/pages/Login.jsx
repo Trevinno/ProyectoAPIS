@@ -36,7 +36,7 @@ const Login = () => {
         let {data} = await axios.post("http://localhost:5000/api/users/login", loginInfo).catch(err => err)
         data = data[0]
         if (data) {
-            dispatch({ type: "SET_USER", payload: { name: data.name, client: data.client, country: data.country, bio: data.bio, email: data.email, img_url: data.img_url}});
+            dispatch({ type: "SET_USER", payload: { name: data.name, client: data.client, country: data.country, bio: data.bio, email: data.email, img_url: data.img_url, hobbies: data.hobbies}});
             dispatch({ type: "SET_TEST", payload: { test: 'Newest Test'}});
         } else {
             console.log("Sorry Brother")

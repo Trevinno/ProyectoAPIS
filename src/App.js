@@ -27,6 +27,7 @@ function App() {
     bio: '',
     email: '',
     img_url: '',
+    hobbies: [],
     test: '',
     other_user: {}
   })

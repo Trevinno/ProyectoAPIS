@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react';
+import React, { Component, useContext, useState, useEffect } from 'react';
 import { useHistory, Redirect } from "react-router-dom";
 
 import '../css/perfil.css'
@@ -17,14 +17,21 @@ const emojiArray = {
     portugal: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-portugal_1f1f5-1f1f9.png",
     china: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-china_1f1e8-1f1f3.png",
     france: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-france_1f1eb-1f1f7.png",
+    canada: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/flag-canada_1f1e8-1f1e6.png",
     other: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/white-flag_1f3f3-fe0f.png"
   };
 
 
 const Perfil = () => {
     let { state: globalState, dispatch } = useContext(main);
-
+    let [flag, setFlag] = useState("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/white-flag_1f3f3-fe0f.png");
     const history = useHistory()
+
+
+    useEffect(async () => {
+        let flagC = emojiArray[globalState.country.toLowerCase()]
+        setFlag(flagC)
+    }, []);
 
     const handleUpdate = () => {
         history.push('/UpdateProfile/')
@@ -34,13 +41,14 @@ const Perfil = () => {
         return <Redirect to='/Homepage'/>;
     }
 
+    
     return ( 
         <React.Fragment>
             <section class="profile_container">
                 <div class="profile_img_section">
                     <img class="profile_img-LG" src={globalState.img_url} />
                     <div class="flag_wrapper">
-                        <img class="flag" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/279/flag-south-korea_1f1f0-1f1f7.png" alt="South Korean Flag" />
+                        <img class="flag" src={flag} alt="South Korean Flag" />
                     </div>
                 </div>
 
@@ -50,7 +58,7 @@ const Perfil = () => {
                     <p class="description">{globalState.bio}</p>
 
                     <div class="interests">
-                        {globalState.hobbies && globalState.hobbies > 0 && globalState.hobbies.map(el => 
+                        {globalState.hobbies && globalState.hobbies.length > 0 && globalState.hobbies.map(el => 
                         <span class="interests_item">
                             {el}
                         </span>
